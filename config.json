@@ -1,0 +1,19 @@
+{
+    "root": "/home/e300/mahmood/datasets/v1_itri_formatted",
+    "experiment_name": "itri_pidnet_tf",
+    "num_classes": 2,
+    "img_height": 384,
+    "img_width": 512,
+    "batch_size": 32,
+    "learning_rate": 1e-4,
+    "epsilon": 1e-8,
+    "epochs": 50,
+    "mean": [0.45156396, 0.45210441, 0.42131696],
+    "std": [0.2599855, 0.25733862, 0.26711123],
+    "label_map": [0, 0, 255, 1, 1, 1],
+    "resume": true,
+
+    "model_type": "s",
+    "show_model_summary": true
+  }
+  
