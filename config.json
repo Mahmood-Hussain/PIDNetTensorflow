@@ -1,19 +1,20 @@
 {
-    "root": "/home/e300/mahmood/datasets/v1_itri_formatted",
-    "experiment_name": "itri_pidnet_tf",
-    "num_classes": 2,
-    "img_height": 384,
-    "img_width": 512,
-    "batch_size": 32,
+    "root": "/home/e300/mahmood/datasets/cityscapes",
+    "experiment_name": "cityscapes_pidnet_tf_l",
+    "dataset": "cityscapes",
+    "num_classes": 19,
+    "img_height": 512,
+    "img_width": 1024,
+    "batch_size": 16,
     "learning_rate": 1e-4,
     "epsilon": 1e-8,
-    "epochs": 50,
-    "mean": [0.45156396, 0.45210441, 0.42131696],
-    "std": [0.2599855, 0.25733862, 0.26711123],
+    "epochs": 100,
+    "mean": [0.28805044, 0.32632137, 0.2854135 ],
+    "std": [0.17725339, 0.18182704, 0.17837277],
     "label_map": [0, 0, 255, 1, 1, 1],
     "resume": true,
 
-    "model_type": "s",
+    "model_type": "l",
     "show_model_summary": true
   }
   

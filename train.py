@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 from criterion import BasnetLoss
 from pidnet import get_pred_model
-from dataloder import KashmirDataset
+from dataloder import KashmirDataset, CityscapesDataset
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Train PIDNet on custom Dataset")
@@ -73,10 +73,15 @@ def train_pidnet(config):
     with open(os.path.join(experiment_dir, 'config_copy.json'), 'w', encoding='utf-8') as f:
         json.dump(config, f, ensure_ascii=False, indent=4)
 
-    train_ds = KashmirDataset(config['root'], 'train', crop_size=(config['img_height'], config['img_width']), num_classes=config['num_classes'], mean=config['mean'], std=config['std'], label_mapping=dict(zip(config['label_map'][::2], config['label_map'][1::2])))
+    if config['dataset'] == 'cityscapes':
+        train_ds = CityscapesDataset(config['root'], 'train', crop_size=(config['img_height'], config['img_width']), num_classes=config['num_classes'], mean=config['mean'], std=config['std'])
+        val_ds = CityscapesDataset(config['root'], 'val', crop_size=(config['img_height'], config['img_width']), num_classes=config['num_classes'], mean=config['mean'], std=config['std'])
+    else:
+        train_ds = KashmirDataset(config['root'], 'train', crop_size=(config['img_height'], config['img_width']), num_classes=config['num_classes'], mean=config['mean'], std=config['std'])
+        val_ds = KashmirDataset(config['root'], 'val', crop_size=(config['img_height'], config['img_width']), num_classes=config['num_classes'], mean=config['mean'], std=config['std'])
+    
     tf_train_ds = train_ds.get_dataset().batch(config['batch_size'])
 
-    val_ds = KashmirDataset(config['root'], 'val', crop_size=(config['img_height'], config['img_width']), num_classes=config['num_classes'], mean=config['mean'], std=config['std'], label_mapping=dict(zip(config['label_map'][::2], config['label_map'][1::2])))
     tf_val_ds = val_ds.get_dataset().batch(config['batch_size'])
 
     pidnet_model = get_pred_model(config['model_type'], (config['img_height'], config['img_width'], 3), config['num_classes'])
@@ -156,7 +161,7 @@ def train_pidnet(config):
     reduce_lr_callback = keras.callbacks.ReduceLROnPlateau(
         monitor='val_loss',
         factor=0.5,
-        patience=5,
+        patience=10,
         min_lr=1e-6,
         verbose=1
     )

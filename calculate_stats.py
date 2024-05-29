@@ -2,6 +2,7 @@ import os
 import argparse
 from PIL import Image
 import numpy as np
+import glob
 
 def calculate_stats(folder_paths):
     """
@@ -23,19 +24,21 @@ def calculate_stats(folder_paths):
 
     # Iterate through each folder
     for folder_path in folder_paths:
-        print(f"🚀 Calculating stats for {folder_path} ..")
-        for filename in os.listdir(folder_path):
-            if not filename.lower().endswith((".jpg", ".png", ".jpeg")):
-                continue  # Skip non-image files
+        sub_folders = glob.glob(folder_path + '/*')
+        for sub_folder in sub_folders:
+            print(f"🚀 Calculating stats for {sub_folder} ..")
+            for filename in os.listdir(sub_folder):
+                if not filename.lower().endswith((".jpg", ".png", ".jpeg")):
+                    continue  # Skip non-image files
 
-            image = Image.open(os.path.join(folder_path, filename))
-            image_array = np.array(image) / scaler  # Normalize image data to 0-1 range
+                image = Image.open(os.path.join(folder_path, sub_folder, filename))
+                image_array = np.array(image) / scaler  # Normalize image data to 0-1 range
 
-            # Update channel means and stds
-            channel_means += np.mean(image_array, axis=(0, 1))
-            channel_stds += np.std(image_array, axis=(0, 1))
-            num_images += 1
-        print(f"🔥 Done wtih {folder_path} ")
+                # Update channel means and stds
+                channel_means += np.mean(image_array, axis=(0, 1))
+                channel_stds += np.std(image_array, axis=(0, 1))
+                num_images += 1
+            print(f"🔥 Done wtih {folder_path} ")
 
     # Calculate overall mean and std (divide by number of images)
     if num_images > 0:
