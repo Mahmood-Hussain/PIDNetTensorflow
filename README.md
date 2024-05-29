@@ -1,4 +1,4 @@
-# [PIDNet](https://arxiv.org/pdf/2206.02066.pdf)  [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fhamidriasat%2FPIDNet%2F&count_bg=%2379C83D&title_bg=%23555555&icon=sega.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)      <a href="/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license" /></a>
+# [PIDNet Paper](https://arxiv.org/pdf/2206.02066.pdf)  [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fhamidriasat%2FPIDNet%2F&count_bg=%2379C83D&title_bg=%23555555&icon=sega.svg&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)      <a href="/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license" /></a>
 <!-- https://hits.seeyoufarm.com/ -->
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/pidnet-a-real-time-semantic-segmentation/real-time-semantic-segmentation-on-camvid)](https://paperswithcode.com/sota/real-time-semantic-segmentation-on-camvid?p=pidnet-a-real-time-semantic-segmentation)   [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/pidnet-a-real-time-semantic-segmentation/real-time-semantic-segmentation-on-cityscapes)](https://paperswithcode.com/sota/real-time-semantic-segmentation-on-cityscapes?p=pidnet-a-real-time-semantic-segmentation)   [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/pidnet-a-real-time-semantic-segmentation/real-time-semantic-segmentation-on-cityscapes-1)](https://paperswithcode.com/sota/real-time-semantic-segmentation-on-cityscapes-1?p=pidnet-a-real-time-semantic-segmentation)
@@ -9,14 +9,6 @@
 
 This project is designed to train PIDNet on a custom dataset, it has custom loss functions so please consider that. The following steps will guide you through setting up the project and preparing your data.
 
-### Requirements
-
-First, ensure you have all the required packages installed. You can do this by installing the packages listed in `requirements.txt`.
-
-```bash
-pip install -r requirements.txt
-```
-
 ### Cloning the Repository
 
 Clone the repository to your local machine using the following command:
@@ -24,6 +16,14 @@ Clone the repository to your local machine using the following command:
 ```bash
 git clone https://github.com/Mahmood-Hussain/PIDNetTensorflow.git
 cd PIDNetTensorflow
+```
+
+### Requirements
+
+First, ensure you have all the required packages installed. You can do this by installing the packages listed in `requirements.txt`.
+
+```bash
+pip install -r requirements.txt
 ```
 
 ### Configuration File
